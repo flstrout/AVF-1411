@@ -1,6 +1,6 @@
 dependencies: \
-  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/StroutFred_AVF1411_Project1/build/iphone/Classes/GDataXMLNode.m \
-  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/StroutFred_AVF1411_Project1/build/iphone/Classes/GDataXMLNode.h \
+  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/GDataXMLNode.m \
+  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/GDataXMLNode.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.1.sdk/usr/include/libxml2/libxml/tree.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.1.sdk/usr/include/libxml2/libxml/xmlversion.h \
   /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneSimulator.platform/Developer/SDKs/iPhoneSimulator8.1.sdk/usr/include/libxml2/libxml/xmlexports.h \

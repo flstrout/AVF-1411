@@ -3,17 +3,14 @@
 // Created on: 10/30/2014
 
 // Wrap the whole package in a function for stronger execution control
-var netCheck = function(url){
-	
-	// Set the api location
-	//var url = "http://api.reddit.com/r/startrek";
+var netCheck = function(url){ // pass in the url from the function call for improved modularization
 	
 	// Create a variable to pass to the onload property of the createHTTPClient method
 	var loadData = function (e){
 		var remoteData = JSON.parse(this.responseText);
-		// console.log(remoteData);
+		//console.log(remoteData);
 		var icon = remoteData.current_observation.icon_url;
-		console.log(icon);
+		//console.log(icon);
 		/*var posts = thisData.data.children;
 		var postArray = [];
 		
@@ -32,7 +29,9 @@ var netCheck = function(url){
 		display.displayData(postArray);*/
 		var iconImage = Ti.UI.createImageView({
 			image: icon,
-			top: 20
+			top: 20,
+			width: 55,
+			height: 55
 		});
 
 		window.add(iconImage);
