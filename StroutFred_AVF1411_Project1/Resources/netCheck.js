@@ -2,6 +2,8 @@
 // Fred L. Strout
 // Created on: 10/30/2014
 
+var openUI = require("ui");
+
 // Wrap the whole package in a function for stronger execution control
 var netCheck = function(url){ // pass in the url from the function call for improved modularization
 	
@@ -27,14 +29,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		
 		// console.log(postArray);
 		display.displayData(postArray);*/
-		var iconImage = Ti.UI.createImageView({
-			image: icon,
-			top: 20,
-			width: 55,
-			height: 55
-		});
-
-		window.add(iconImage);
+		openUI.buildUI(icon);
 	};
 	
 	// Create an alert box to display an error message for the onerror property of the createHTTPClient method

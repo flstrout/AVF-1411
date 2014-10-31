@@ -1,0 +1,38 @@
+var buildUI = function(icon){
+	var backGround = Ti.UI.createView({
+		top: 160,
+		backgroundColor: "#aaa",
+		height: "45%",
+		width: "80%",
+		opacity: .6,
+		borderRadius: 15
+	});
+	
+	var iconBG = Ti.UI.createView({
+		top: 145,
+		backgroundColor: "#444",
+		width: 80,
+		height: 54,
+		borderRadius: 15
+	});
+	
+	var patch = Ti.UI.createView({
+		backgroundColor: "#09f",
+		top: 145,
+		width: 80,
+		height: 15
+	});
+	
+	var iconImage = Ti.UI.createImageView({
+		image: icon,
+		top: 150,
+		width: 55,
+		height: 55
+	});
+	
+	window.add(backGround);
+	window.add(iconBG);
+	window.add(patch);
+	window.add(iconImage);
+};
+exports.buildUI = buildUI;

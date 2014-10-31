@@ -1,0 +1,20 @@
+var buildUI = function(icon){
+	var mainView = Ti.UI.createView({
+		top: 150,
+		backgroundColor: "#222",
+		width: 65,
+		height: 50,
+		opacity: .35
+	});
+	
+	var iconImage = Ti.UI.createImageView({
+		image: icon,
+		top: 155,
+		width: 55,
+		height: 55
+	});
+	
+	window.add(mainView);
+	window.add(iconImage);
+};
+exports.buildUI = buildUI;
