@@ -1,31 +1,42 @@
-var buildUI = function(icon){
-	var bottomBG = Ti.UI.createView({
-		top: 410,
-		height: 150,
-		width: 150,
-		borderRadius: 75,
-		backgroundColor: "#ddd",
-		opacity: .8
+var buildUI = function(icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees){
+	
+	var lblLast = Ti.UI.createLabel({
+		text: last,
+		top: 2,
+		left: 5,
+		color: "#000"
 	});
 	
-	var patch1 = Ti.UI.createView({
-		backgroundColor: "#09f",
-		top: 410,
-		width: 150,
-		height: 100
+	var lblCondition = Ti.UI.createLabel({
+		text: "   - " + condition,
+		top: 2,
+		left: 5,
+		color: "#000"
+	});
+	
+	var lblLocation = Ti.UI.createLabel({
+		text: "Forecast for: " + location,
+		top: 60,
+		left: 5,
+		color: "#000"
 	});
 	
 	var backGround = Ti.UI.createView({
-		top: 100,
+		top: 60,
 		backgroundColor: "#ddd",
 		height: 410,
 		width: "80%",
 		opacity: .8,
-		borderRadius: 30
+		borderRadius: 30,
+		layout: "vertical"
 	});
+	backGround.add(lblLocation);
+	backGround.add(lblLast);
+	backGround.add(lblCondition);
+	
 
 	var iconBG = Ti.UI.createView({
-		top: 85,
+		top: 45,
 		backgroundColor: "#444",
 		width: 140,
 		height: 70,
@@ -34,20 +45,18 @@ var buildUI = function(icon){
 	
 	var patch2 = Ti.UI.createView({
 		backgroundColor: "#09f",
-		top: 85,
+		top: 45,
 		width: 140,
 		height: 15
 	});
 	
 	var iconImage = Ti.UI.createImageView({
 		image: icon,
-		top: 86,
+		top: 46,
 		width: 65,
 		height: 65
 	});
 	
-	window.add(bottomBG);
-	window.add(patch1);
 	window.add(backGround);
 	window.add(iconBG);
 	window.add(patch2);
