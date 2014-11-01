@@ -3,6 +3,7 @@
 // Created on: 10/30/2014
 
 var openUI = require("ui");
+var saveData = require("db");
 
 // Wrap the whole package in a function for stronger execution control
 var netCheck = function(url){ // pass in the url from the function call for improved modularization
@@ -10,25 +11,27 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	// Create a variable to pass to the onload property of the createHTTPClient method
 	var loadData = function (e){
 		var remoteData = JSON.parse(this.responseText);
+		var observe = remoteData.current_observation;
+		var forecast = remoteData.forecast.simpleforecast.forecastday[0];
 		//console.log(remoteData);
-		var icon = remoteData.current_observation.icon_url;
-		//console.log(icon);
-		/*var posts = thisData.data.children;
-		var postArray = [];
 		
-		// Loop through the remote data to extract only the desired data and push that data to its own array
-		for(i=0, j=posts.length; i<j; i++){
-			var post = {
-				title: posts[i].data.title,
-				picture: posts[i].data.thumbnail
-			};
-			
-			// Push the extracted data to the array
-			postArray.push(post);
-		};
+		var icon = observe.icon_url;
+		var location = "Forecast for: " + observe.display_location.full;
+		var feels = "Feels like: " + observe.feelslike_f + "\u00B0" + "F";
+		var last = observe.observation_time;
+		var condition = observe.weather;
+		var min_max = "Min: " + forecast.low.fahrenheit + "\u00B0" + "F/Max: " + forecast.high.fahrenheit + "\u00B0" + "F";
+		var fahrenheit = observe.temp_f + "\u00B0" + "F";
+		var celsius = "/" + observe.temp_c + "\u00B0" + "C";
+		var humidity = observe.relative_humidity;
+		var precip = observe.precip_today_in + " in.";
+		var heat = observe.heat_index_f;
+		var press = observe.pressure_in + " in.";
+		var windSpeed = observe.wind_mph;
+		var windDirection = observe.wind_dir;
+		var windDegrees = observe.wind_degrees;
 		
-		// console.log(postArray);
-		display.displayData(postArray);*/
+		saveData.create(icon, location, feels, last, condition, min_max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees);
 		openUI.buildUI(icon);
 	};
 	
@@ -39,6 +42,10 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	
 	// If statement to detect if the device is connected to the Network
 	if (Ti.Network.online){ // If True, then
+		var db = Ti.Database.open ('localData');
+		db.execute('DELETE FROM tblData');
+		db.close();
+		
 		var remoteData = Ti.Network.createHTTPClient({
 			onload: loadData,
 			onerror: errorData
