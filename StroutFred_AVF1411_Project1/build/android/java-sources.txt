@@ -1,0 +1,7 @@
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/android/support/v7/appcompat/R.java"
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/com/fullsail/demoApp/ApplicationStylesheet.java"
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/com/fullsail/demoApp/R.java"
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/com/fullsail/demoApp/Stroutfred_avf1411_project1Activity.java"
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/com/fullsail/demoApp/Stroutfred_avf1411_project1AppInfo.java"
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/com/fullsail/demoApp/Stroutfred_avf1411_project1Application.java"
+"/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/android/gen/ti/modules/titanium/ui/R.java"
