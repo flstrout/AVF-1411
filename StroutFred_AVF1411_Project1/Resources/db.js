@@ -1,3 +1,7 @@
+// AVF-1411 - Project 1a
+// Fred L. Strout
+// Created on: 10/30/2014
+
 var openUI = require("ui");
 var tblConditions = [];
 
@@ -30,7 +34,7 @@ var read = function(){
 	dbRows.close();
 	db.close();
 	var a = tblConditions[0];
-	console.log(tblConditions);
+	//console.log(tblConditions);
 	openUI.buildUI(a.icon, a.location, a.feels, a.last, a.condition, a.min, a.max, a.fahrenheit, a.celsius, a.humidity, a.precip, a.heat, a.press, a.windSpeed, a.windDirection, a.windDegrees);
 	
 };

@@ -1,0 +1,163 @@
+var buildUI = function(icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees){
+	var fSize = 16;
+	
+	var lblHeat = Ti.UI.createLabel({
+		text: heat,
+		top: 360,
+		font: {fontSize: fSize},
+		right: 150,
+		color: "#000"
+	});
+	
+	var lblPress = Ti.UI.createLabel({
+		text: press + " in.",
+		top: 360,
+		font: {fontSize: fSize},
+		right: 15,
+		color: "#000"
+	});
+	
+	var lblPrecip = Ti.UI.createLabel({
+		text: precip + " in.",
+		top: 360,
+		font: {fontSize: fSize},
+		left: 150,
+		color: "#000"
+	});
+	
+	var lblHumidity = Ti.UI.createLabel({
+		text: humidity,
+		top: 360,
+		font: {fontSize: fSize},
+		left: 15,
+		color: "#000"
+	});
+	
+	var lblHumidity1 = Ti.UI.createLabel({
+		text: "Humidity",
+		top: 340,
+		font: {fontSize: fSize},
+		left: 15,
+		color: "#000"
+	});
+	
+	var botBar = Ti.UI.createView({
+		backgroundColor: "#333",
+		top: 310, left: 8, right: 8,
+		height: 2
+	});
+	
+	var lblFeels = Ti.UI.createLabel({
+		text: "Feels like " + feels + "\u00b0" + "F",
+		top: 285,
+		font: {fontSize: fSize},
+		left: 15,
+		color: "#000"
+	});
+	
+	var lblCelsius = Ti.UI.createLabel({
+		text: "/" + celsius + "\u00b0" + "C",
+		top: 285,
+		font: {fontSize: fSize},
+		right: 15,
+		color: "#000"
+	});
+	
+	var lblfahrenheit = Ti.UI.createLabel({
+		text: fahrenheit + "\u00b0" + "F",
+		top: 100,
+		font: {fontSize: 130},
+		color: "#000"
+	});
+	
+	var lblMinMax = Ti.UI.createLabel({
+		text: "Min: " + min + "\u00b0" + "F/Max: " + max + "\u00b0" + "F",
+		top: 65,
+		font: {fontSize: fSize},
+		right: 15,
+		color: "#000"
+	});
+	
+	var lblLast = Ti.UI.createLabel({
+		text: last,
+		top: 65,
+		font: {fontSize: fSize},
+		left: 15,
+		color: "#000"
+	});
+	
+	var topBar = Ti.UI.createView({
+		backgroundColor: "#333",
+		top: 60, left: 8, right: 8,
+		height: 2
+	});
+	
+	var lblCondition = Ti.UI.createLabel({
+		text: condition,
+		top: 20,
+		font: {fontSize: 20},
+		right: 15,
+		color: "#000"
+	});
+	
+	var lblLocation = Ti.UI.createLabel({
+		text: location,
+		top: 15,
+		font: {fontSize: 26},
+		left: 15,
+		color: "#000"
+	});
+	
+	var backGround = Ti.UI.createView({
+		top: 60,
+		backgroundColor: "#ddd",
+		height: 410,
+		width: "80%",
+		opacity: .8,
+		borderRadius: 30
+	});
+	
+	backGround.add(lblLocation);
+	backGround.add(lblCondition);
+	backGround.add(topBar);
+	backGround.add(lblLast);
+	backGround.add(lblMinMax);
+	backGround.add(lblfahrenheit);
+	backGround.add(lblCelsius);
+	backGround.add(lblFeels);
+	backGround.add(botBar);
+	backGround.add(lblHumidity1);
+	backGround.add(lblHumidity);
+	backGround.add(lblPrecip);
+	backGround.add(lblPress);
+	backGround.add(lblHeat);
+
+	
+	var iconBG = Ti.UI.createView({
+		top: 45,
+		backgroundColor: "#444",
+		width: 140,
+		height: 70,
+		borderRadius: 15
+	});
+	
+	var patch2 = Ti.UI.createView({
+		backgroundColor: "#09f",
+		top: 45,
+		width: 140,
+		height: 15
+	});
+	
+	var iconImage = Ti.UI.createImageView({
+		image: icon,
+		top: 54,
+		width: 65,
+		height: 65
+	});
+	
+	window.add(backGround);
+	//window.add(iconBG);
+	window.add(patch2);
+	window.add(iconImage);
+};
+exports.buildUI = buildUI;

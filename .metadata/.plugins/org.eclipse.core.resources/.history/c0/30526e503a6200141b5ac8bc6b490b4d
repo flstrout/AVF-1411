@@ -1,0 +1,20 @@
+// AVF-1411 - Project 1a
+// Fred L. Strout
+// Created on: 10/30/2014
+
+var getLocation = function(){
+	Ti.Geolocation.getCurrentPosition(function(evt){
+		if(Ti.Platform.osname != "android"){
+			var location = {
+				lat: evt.coords.latitude,
+				lon: evt.coords.longitude
+			};
+		}else{
+			var location = {
+				lat: 38.5812700,
+				lon: 121.4944000
+			};
+		};
+		exports.lat = location.lat;
+		exports.lon = location.lon;
+};
