@@ -3,6 +3,7 @@
 // Created on: 10/30/2014
 
 var saveData = require("db");
+var image = "/icons/Sun.gif";
 
 // Wrap the whole package in a function for stronger execution control
 var netCheck = function(url){ // pass in the url from the function call for improved modularization
@@ -14,7 +15,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		var forecast = remoteData.forecast.simpleforecast.forecastday[0];
 		//console.log(remoteData);
 		
-		var icon = observe.icon_url;
+		var icon = image;
 		var location = observe.display_location.full;
 		var feels = observe.feelslike_f;
 		var last = observe.observation_time;

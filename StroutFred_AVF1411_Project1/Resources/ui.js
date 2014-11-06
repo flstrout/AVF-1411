@@ -194,7 +194,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	});
 	
 	var backGround = Ti.UI.createView({
-		top: 60,
+		top: 100,
 		backgroundColor: "#ddd",
 		height: 410,
 		width: "95%",
@@ -226,29 +226,31 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	backGround.add(lblSpeed);
 	
 	var iconBG = Ti.UI.createView({
-		top: 45,
-		backgroundColor: "#444",
-		width: 140,
-		height: 70,
-		borderRadius: 15
+		top: 65,
+		backgroundColor: "#333",
+		width: 170,
+		height: 92,
+		borderRadius: 25
 	});
 	
 	var patch2 = Ti.UI.createView({
 		backgroundColor: "#09f",
-		top: 45,
-		width: 140,
-		height: 15
+		top: 65,
+		width: 170,
+		height: 35
 	});
 	
-	var iconImage = Ti.UI.createImageView({
-		image: icon,
-		top: 54,
-		width: 65,
-		height: 65
+	var iconImage = Ti.UI.createWebView({
+		url: icon,
+		top: 21,
+		width: 135,
+		height: 135,
+		backgroundColor: "#09f",
+		scalesPageToFit: true
 	});
 	
 	window.add(backGround);
-	//window.add(iconBG);
+	window.add(iconBG);
 	window.add(patch2);
 	window.add(iconImage);
 };
