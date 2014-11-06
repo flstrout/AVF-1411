@@ -1,1 +1,0 @@
-/Users/fredstrout/Documents/Full Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/Resources/location.js

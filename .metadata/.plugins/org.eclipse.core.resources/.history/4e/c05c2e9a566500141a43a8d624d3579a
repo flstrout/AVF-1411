@@ -1,0 +1,35 @@
+// AVF-1411 - Project 1a
+// Fred L. Strout
+// Created on: 10/30/2014
+
+var getNetCheck = require("netCheck");
+
+Ti.Database.install("/database/localDataDB.sqlite", "localData");
+
+var currentLocation = function(){
+	Ti.Geolocation.ACCURACY_HIGH;
+	Ti.Geolocation.getCurrentPosition(function(e){
+		var lat = e.coords.latitude;
+		var lon = e.coords.longitude;
+		var coordinates = lat + "," + lon;
+		console.log(coordinates);
+		var urlAPI = "http://api.wunderground.com/api/4af8df4427496b2f/conditions/forecast/q/" + coordinates + ".json";
+		getNetCheck.checkNet(urlAPI);
+	});
+};
+
+currentLocation();
+//console.log(lat+","+lon);
+//var urlAPI = "http://api.wunderground.com/api/4af8df4427496b2f/conditions/forecast/q/LA/Rayne.json";
+
+
+
+//console.log(getLocation);
+
+//getNetCheck.checkNet(urlAPI);
+
+var window = Ti.UI.createWindow({
+	backgroundColor: "#09f"
+});
+
+window.open();

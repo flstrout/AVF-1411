@@ -197,7 +197,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		top: 60,
 		backgroundColor: "#ddd",
 		height: 410,
-		width: "80%",
+		width: "95%",
 		opacity: .8,
 		borderRadius: 30
 	});
