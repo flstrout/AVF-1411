@@ -39,21 +39,21 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		// Could do a select case here - might revisit that	
 		if (icon === "clear" || icon === "sunny"){
 			if (night === false){
-				var ico = "/icons/Sun.gif";
+				var ico = "/icons/Sun/Sun";
 			} else {
-				var ico = "/icons/Moon.gif";
+				var ico = "/icons/Moon/Moon";
 			};
 		} else if (icon === "chancerain" || icon === "rain"){
-			var ico = "/icons/Rain.gif";
+			var ico = "/icons/Rain/Rain";
 		} else if (icon === "tstorms" || icon === "unknown"){
-			var ico = "/icons/Lightning.gif";
+			var ico = "/icons/Lightning/Lightning";
 		} else if (icon === "cloudy"){
-			var ico = "/icons/Overcast.gif";
+			var ico = "/icons/Overcast/Overcast";
 		} else {
 			if (night === false){
-				var ico = "/icons/PartlyCloudy.gif";
+				var ico = "/icons/PartlyCloudy/PartlyCloudy";
 			} else {
-				var ico = "/icons/MoonCloudy.gif";
+				var ico = "/icons/MoonCloudy/MoonCloudy";
 			};
 		};
 		

@@ -240,6 +240,16 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		height: 35
 	});
 	
+	var iconImage = Ti.UI.createImageView({
+		//image: "/icons/Sun/Sun1.png",
+		top: 50,
+		width:182,
+		height: 182
+		//backgroundColor: "#09f",
+		//borderRadius: 60
+	});
+	
+	/*
 	var iconImage = Ti.UI.createWebView({
 		url: icon,
 		top: 67,
@@ -253,10 +263,32 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		iconImage.width = 135;
 		iconImage.heigth = 135;
 	};
+	*/
 	
 	window.add(backGround);
 	//window.add(iconBG);
 	//window.add(patch2);
 	window.add(iconImage);
+	
+	
+	// initialize the index to 1
+	var loaderIndex=1;
+	 
+	// this function will be called by the setInterval
+	function loadingAnimation(){
+		
+	  // set the image property of the imageview by constructing the path with the loaderIndex variable
+	  iconImage.image = icon + loaderIndex + ".png";
+	  
+	  //increment the index so that next time it loads the next image in the sequence
+	  loaderIndex++;
+	  
+	  // if you have reached the end of the sequence, reset it to 1
+	  if(loaderIndex===25)loaderIndex=1;
+	}
+	 
+	// start the setInverval -- adjust the time to make a smooth animation
+	var loaderAnimate = setInterval(loadingAnimation,30);
+	
 };
 exports.buildUI = buildUI;
