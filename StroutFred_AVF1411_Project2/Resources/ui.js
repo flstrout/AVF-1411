@@ -1,6 +1,6 @@
-// AVF-1411 - Project 1a
+// AVF-1411 - Project 2
 // Fred L. Strout
-// Created on: 10/30/2014
+// Created on: 11/6/2014
 
 var buildUI = function(icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees){
 	var fSize = 16;

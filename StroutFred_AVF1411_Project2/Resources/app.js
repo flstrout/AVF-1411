@@ -1,6 +1,6 @@
-// AVF-1411 - Project 1a
+// AVF-1411 - Project 2
 // Fred L. Strout
-// Created on: 10/30/2014
+// Created on: 11/6/2014
 
 var getNetCheck = require("netCheck");
 var getLocation = require("location");
