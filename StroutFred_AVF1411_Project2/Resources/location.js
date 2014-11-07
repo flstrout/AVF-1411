@@ -2,6 +2,8 @@
 // Fred L. Strout
 // Created on: 11/6/2014
 
+var getNetCheck = require("netCheck");
+
 var currentLocation = function(){
 	Ti.Geolocation.ACCURACY_HIGH;
 	Ti.Geolocation.getCurrentPosition(function(e){
@@ -9,6 +11,7 @@ var currentLocation = function(){
 			var lat = e.coords.latitude;
 			var lon = e.coords.longitude;
 		}else{
+			
 			var lat = 37.3318;
 			var lon = -122.029583;
 		};

@@ -41,19 +41,21 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		if (icon === "clear" || icon === "sunny"){
 			if (night === false){
 				var ico = "/icons/Sun.gif";
+			} else {
+				var ico = "/icons/Moon.gif";
 			};
-			var ico = "/icons/Moon.gif";
 		} else if (icon === "chancerain" || icon === "rain"){
 			var ico = "/icons/Rain.gif";
 		} else if (icon === "tstorms" || icon === "unknown"){
 			var ico = "/icons/Lightning.gif";
 		} else if (icon === "cloudy"){
 			var ico = "/icons/Overcast.gif";
-		} else if (icon === "mostlycloudy"){
+		} else {
 			if (night === false){
 				var ico = "/icons/PartlyCloudy.gif";
+			} else {
+				var ico = "/icons/MoonCloudy.gif";
 			};
-			var ico = "/icons/MoonCloudy.gif";
 		};
 		
 		saveData.create(ico, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees);
