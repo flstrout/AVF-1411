@@ -7,8 +7,8 @@ var tblConditions = [];
 
 var read = function(){
 	var db = Ti.Database.open("localData");
-	db.execute("CREATE TABLE IF NOT EXISTS tblData (id INTEGER PRIMARY KEY , icon TEXT, location TEXT, feels TEXT, last TEXT, condition TEXT, min TEXT, max TEXT, fahrenheit TEXT, celsius TEXT, humidity TEXT, precip TEXT, heat TEXT, press TEXT, windSpeed TEXT, windDirection TEXT, windDegrees TEXT)");
-	var dbRows = db.execute("SELECT id, icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees FROM tblData");
+	db.execute("CREATE TABLE IF NOT EXISTS tblData (id INTEGER PRIMARY KEY , icon TEXT, location TEXT, feels TEXT, last TEXT, condition TEXT, min TEXT, max TEXT, fahrenheit TEXT, celsius TEXT, humidity TEXT, precip TEXT, heat TEXT, press TEXT, windSpeed TEXT, windDirection TEXT, windDegrees TEXT, night TEXT)");
+	var dbRows = db.execute("SELECT id, icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees, night FROM tblData");
 	while (dbRows.isValidRow()){
 		tblConditions.push({
 			id: dbRows.fieldByName("id"),
@@ -27,7 +27,8 @@ var read = function(){
 			press: dbRows.fieldByName("press"),
 			windSpeed: dbRows.fieldByName("windSpeed"),
 			windDirection: dbRows.fieldByName("windDirection"),
-			windDegrees: dbRows.fieldByName("windDegrees")
+			windDegrees: dbRows.fieldByName("windDegrees"),
+			night: dbRows.fieldByName("night")
 		});
 		dbRows.next();
 	}
@@ -40,11 +41,11 @@ var read = function(){
 };
 exports.read = read;
 
-var create = function (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16){
+var create = function (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17){
 
 	var db = Ti.Database.open("localData");
-	db.execute("CREATE TABLE IF NOT EXISTS tblData (id INTEGER PRIMARY KEY , icon TEXT, location TEXT, feels TEXT, last TEXT, condition TEXT, min TEXT, max TEXT, fahrenheit TEXT, celsius TEXT, humidity TEXT, precip TEXT, heat TEXT, press TEXT, windSpeed TEXT, windDirection TEXT, windDegrees TEXT)");
-	db.execute("INSERT INTO tblData (icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16);
+	db.execute("CREATE TABLE IF NOT EXISTS tblData (id INTEGER PRIMARY KEY , icon TEXT, location TEXT, feels TEXT, last TEXT, condition TEXT, min TEXT, max TEXT, fahrenheit TEXT, celsius TEXT, humidity TEXT, precip TEXT, heat TEXT, press TEXT, windSpeed TEXT, windDirection TEXT, windDegrees TEXT, night TEXT)");
+	db.execute("INSERT INTO tblData (icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees, night) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)", p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17);
 	var rowID = db.lastInsertRowId;
 	db.close();
 	tblConditions = [];
@@ -52,16 +53,6 @@ var create = function (p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p
 	
 };
 exports.create = create;
-
-var update = function (p1, p2, p3, p4, p5, p6, p7){
-
-	var db = Ti.Database.open("localData");
-	db.execute("UPDATE tblData SET customer=?, date=?, store=?, manager=?, problem=?, promise=? WHERE id=?", p1, p2, p3, p4, p5, p6, p7);
-	db.close();
-	tblConditions = [];
-	read();
-};
-exports.update = update;
 
 var del = function(id){
 	var db = Ti.Database.open("localData");

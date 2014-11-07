@@ -36,8 +36,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 			var night = false;
 		};
 	
-		console.log("Night? = " + night);
-		
+		// Could do a select case here - might revisit that	
 		if (icon === "clear" || icon === "sunny"){
 			if (night === false){
 				var ico = "/icons/Sun.gif";
@@ -58,7 +57,8 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 			};
 		};
 		
-		saveData.create(ico, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees);
+		saveData.create(ico, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees, night);
+		loginCloud.updateCloud(ico, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees, night);
 	};
 	
 	// Create an alert box to display an error message for the onerror property of the createHTTPClient method

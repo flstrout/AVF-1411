@@ -1,1 +1,0 @@
-var getNetCheck=require("netCheck"),getLocation=require("location");Ti.Database.install("/database/localDataDB.sqlite","localData"),getLocation.currentLocation();var window=Ti.UI.createWindow({backgroundColor:"#09f"});window.open();

@@ -1,0 +1,1 @@
+var loginCloud=require("cloud");Ti.Database.install("/database/localDataDB.sqlite","localData");var window=Ti.UI.createWindow({backgroundColor:"#09f"});window.open();

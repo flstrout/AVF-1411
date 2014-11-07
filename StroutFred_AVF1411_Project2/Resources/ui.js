@@ -249,6 +249,11 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		borderRadius: 60
 	});
 	
+	if (Ti.Platform.osname === "android"){
+		iconImage.width = 135;
+		iconImage.heigth = 135;
+	};
+	
 	window.add(backGround);
 	//window.add(iconBG);
 	window.add(patch2);

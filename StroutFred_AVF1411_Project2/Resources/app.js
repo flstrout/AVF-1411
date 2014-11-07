@@ -2,11 +2,11 @@
 // Fred L. Strout
 // Created on: 11/6/2014
 
-var getLocation = require("location");
+var loginCloud = require("cloud");
 
 Ti.Database.install("/database/localDataDB.sqlite", "localData");
 
-getLocation.currentLocation();
+//getLocation.currentLocation();
 
 var window = Ti.UI.createWindow({
 	backgroundColor: "#09f"
