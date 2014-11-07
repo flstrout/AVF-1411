@@ -9,6 +9,7 @@ Ti.Database.install("/database/localDataDB.sqlite", "localData");
 //getLocation.currentLocation();
 
 var window = Ti.UI.createWindow({
+	backgroundImage: "/images/wallpaper.jpg",
 	backgroundColor: "#09f"
 });
 

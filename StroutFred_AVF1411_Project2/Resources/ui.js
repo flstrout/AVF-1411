@@ -256,7 +256,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	window.add(backGround);
 	//window.add(iconBG);
-	window.add(patch2);
+	//window.add(patch2);
 	window.add(iconImage);
 };
 exports.buildUI = buildUI;
