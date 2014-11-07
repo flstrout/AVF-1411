@@ -3,7 +3,6 @@
 // Created on: 10/30/2014
 
 var saveData = require("db");
-var image = "/icons/Sun.gif";
 
 // Wrap the whole package in a function for stronger execution control
 var netCheck = function(url){ // pass in the url from the function call for improved modularization
@@ -13,9 +12,9 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		var remoteData = JSON.parse(this.responseText);
 		var observe = remoteData.current_observation;
 		var forecast = remoteData.forecast.simpleforecast.forecastday[0];
-		//console.log(remoteData);
+		console.log(remoteData);
 		
-		var icon = image;
+		var icon = observe.icon;
 		var location = observe.display_location.full;
 		var feels = observe.feelslike_f;
 		var last = observe.observation_time;
@@ -31,8 +30,33 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		var windSpeed = observe.wind_mph;
 		var windDirection = observe.wind_dir;
 		var windDegrees = observe.wind_degrees;
+		if(observe.observation_time_rfc822.substring(17, 19) >= 18 || observe.observation_time_rfc822.substring(17, 19) <= 5){
+			var night = true;
+		} else {
+			var night = false;
+		};
+	
+		console.log("Night? = " + night);
 		
-		saveData.create(icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees);
+		if (icon === "clear" || icon === "sunny"){
+			if (night === false){
+				var ico = "/icons/Sun.gif";
+			};
+			var ico = "/icons/Moon.gif";
+		} else if (icon === "chancerain" || icon === "rain"){
+			var ico = "/icons/Rain.gif";
+		} else if (icon === "tstorms" || icon === "unknown"){
+			var ico = "/icons/Lightning.gif";
+		} else if (icon === "cloudy"){
+			var ico = "/icons/Overcast.gif";
+		} else if (icon === "mostlycloudy"){
+			if (night === false){
+				var ico = "/icons/PartlyCloudy.gif";
+			};
+			var ico = "/icons/MoonCloudy.gif";
+		};
+		
+		saveData.create(ico, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees);
 	};
 	
 	// Create an alert box to display an error message for the onerror property of the createHTTPClient method

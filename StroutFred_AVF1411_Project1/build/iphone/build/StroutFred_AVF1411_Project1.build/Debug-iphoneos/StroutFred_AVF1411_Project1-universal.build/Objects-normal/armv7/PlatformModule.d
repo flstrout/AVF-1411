@@ -30,6 +30,7 @@ dependencies: \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/Bridge.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiStylesheet.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/KrollBridge.h \
+  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/XHRBridge.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiRootViewController.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiControllerProtocols.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiViewProxy.h \

@@ -68,6 +68,34 @@
 		<data>
 		90KpqVcdYbC4RSGxWGK4+1Rnzy4=
 		</data>
+		<key>icons/Lightning.gif</key>
+		<data>
+		s0TTfUIT1Jc9DYKC1h0V5OIT8NA=
+		</data>
+		<key>icons/Moon.gif</key>
+		<data>
+		ruvtTRuKS5HfVhrO4hv6vNNbcpg=
+		</data>
+		<key>icons/MoonCloudy.gif</key>
+		<data>
+		SlvdYSCzqAIjxA0f6bqaeDRCjOM=
+		</data>
+		<key>icons/Overcast.gif</key>
+		<data>
+		UneiH2q4ctYmlhCrZTWzvQmKtNk=
+		</data>
+		<key>icons/PartlyCloudy.gif</key>
+		<data>
+		8cS3iZjXE5igaHDfPQbssK8canI=
+		</data>
+		<key>icons/Rain.gif</key>
+		<data>
+		XvA5rMvs7hMe9fRI4x39NxmfvCs=
+		</data>
+		<key>icons/Sun.gif</key>
+		<data>
+		bO8CSiLip7xSPKXT1Z5FpSbQ6n4=
+		</data>
 		<key>modules/ui/images/badge.png</key>
 		<data>
 		V0FYZCpzFOcFA7n0Zak4eggMFNM=
@@ -146,6 +174,34 @@
 		<key>embedded.mobileprovision</key>
 		<data>
 		90KpqVcdYbC4RSGxWGK4+1Rnzy4=
+		</data>
+		<key>icons/Lightning.gif</key>
+		<data>
+		s0TTfUIT1Jc9DYKC1h0V5OIT8NA=
+		</data>
+		<key>icons/Moon.gif</key>
+		<data>
+		ruvtTRuKS5HfVhrO4hv6vNNbcpg=
+		</data>
+		<key>icons/MoonCloudy.gif</key>
+		<data>
+		SlvdYSCzqAIjxA0f6bqaeDRCjOM=
+		</data>
+		<key>icons/Overcast.gif</key>
+		<data>
+		UneiH2q4ctYmlhCrZTWzvQmKtNk=
+		</data>
+		<key>icons/PartlyCloudy.gif</key>
+		<data>
+		8cS3iZjXE5igaHDfPQbssK8canI=
+		</data>
+		<key>icons/Rain.gif</key>
+		<data>
+		XvA5rMvs7hMe9fRI4x39NxmfvCs=
+		</data>
+		<key>icons/Sun.gif</key>
+		<data>
+		bO8CSiLip7xSPKXT1Z5FpSbQ6n4=
 		</data>
 		<key>modules/ui/images/badge.png</key>
 		<data>

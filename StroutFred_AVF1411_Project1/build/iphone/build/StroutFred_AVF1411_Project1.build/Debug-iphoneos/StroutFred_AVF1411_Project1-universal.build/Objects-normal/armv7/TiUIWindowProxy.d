@@ -52,5 +52,6 @@ dependencies: \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiApp.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiHost.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiStylesheet.h \
+  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/XHRBridge.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiRootViewController.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiLayoutQueue.h

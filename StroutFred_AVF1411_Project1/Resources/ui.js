@@ -194,7 +194,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	});
 	
 	var backGround = Ti.UI.createView({
-		top: 100,
+		top: 150,
 		backgroundColor: "#ddd",
 		height: 410,
 		width: "95%",
@@ -242,15 +242,15 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var iconImage = Ti.UI.createWebView({
 		url: icon,
-		top: 21,
-		width: 135,
-		height: 135,
+		top: 67,
+		width:182,
+		height: 140,
 		backgroundColor: "#09f",
-		scalesPageToFit: true
+		borderRadius: 60
 	});
 	
 	window.add(backGround);
-	window.add(iconBG);
+	//window.add(iconBG);
 	window.add(patch2);
 	window.add(iconImage);
 };

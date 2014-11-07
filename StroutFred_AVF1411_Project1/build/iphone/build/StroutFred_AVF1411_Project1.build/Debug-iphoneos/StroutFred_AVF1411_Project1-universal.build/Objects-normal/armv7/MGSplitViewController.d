@@ -28,6 +28,7 @@ dependencies: \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiFile.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiBuffer.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiBlob.h \
+  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/XHRBridge.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiRootViewController.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiControllerProtocols.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project1/build/iphone/Classes/TiViewProxy.h \
