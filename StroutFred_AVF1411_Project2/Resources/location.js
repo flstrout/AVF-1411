@@ -16,7 +16,7 @@ var currentLocation = function(){
 			var lon = -122.029583;
 		};
 		var coordinates = lat + "," + lon;
-		console.log(coordinates);
+		//console.log(coordinates);
 		var urlAPI = "http://api.wunderground.com/api/4af8df4427496b2f/conditions/forecast/q/" + coordinates + ".json";
 		getNetCheck.checkNet(urlAPI);
 	});

@@ -7,18 +7,20 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var btnRefresh = Ti.UI.createButton({
 		title: "Refresh",
-		width: 80,
-		height: 30,
+		font: {fontSize: fSize, fontWeight: "bold"},
+		width: 100,
+		height: 35,
 		borderWidth: 2,
 		borderRadius: 3,
 		borderColor: "#09f",
 		top: 90,
-		left: 15
+		left: 15,
+		verticalAlign: "center"
 	});
 	
 	var compass = Ti.UI.createView({
 		top: 73,
-		//backgroundColor: "#08f",
+		backgroundColor: "#08f",
 		height: 114,
 		width: 114,
 		borderColor: "#333",
@@ -254,22 +256,26 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	backGround.add(lblHeat1);
 	backGround.add(lblHeat);
 	backGround.add(btnRefresh);
-	backGround.add(lblDirection);
+	//backGround.add(lblDirection);
 	
 	var iconBG = Ti.UI.createView({
 		top: backGround.top + 250,
 		width: 200,
 		height: 200,
 		opacity: .8,
-		borderRadius: 100,
-		backgroundGradient: {
+		borderRadius: 100 
+	});
+	
+	if (Ti.Platform.osname !== "android"){
+		//compass.backgroundColor = "";
+		iconBG.backgroundGradient = {
 	        type: 'linear',
 	        startPoint: { x: '50%', y: '80%' },
 	        endPoint: { x: '50%', y: '100%' },
-	        colors: [ { color: "#ddd", offset: 0.0} ],
-		}
-	});
-	
+	        colors: [ {color: "#ddd", offset: 0.0} ],
+		};
+		
+	};
 	iconBG.add(compass);
 	iconBG.add(lblDirection);
 	
@@ -305,13 +311,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		height: 140,
 		backgroundColor: "#09f",
 		borderRadius: 60
-	});
-	
-	if (Ti.Platform.osname === "android"){
-		iconImage.width = 135;
-		iconImage.heigth = 135;
-	};
-	*/
+	});*/
 	
 	window.add(masterView);
 	
