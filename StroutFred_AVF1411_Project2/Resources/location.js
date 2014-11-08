@@ -3,7 +3,7 @@
 // Created on: 11/6/2014
 
 var getNetCheck = require("netCheck");
-
+	
 var currentLocation = function(){
 	Ti.Geolocation.ACCURACY_HIGH;
 	Ti.Geolocation.getCurrentPosition(function(e){

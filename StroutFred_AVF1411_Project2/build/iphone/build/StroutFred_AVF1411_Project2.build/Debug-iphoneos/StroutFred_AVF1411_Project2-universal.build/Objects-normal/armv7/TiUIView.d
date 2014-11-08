@@ -36,6 +36,7 @@ dependencies: \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/APSHTTPClient/APSHTTPResponse.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/APSHTTPClient/APSHTTPPostForm.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/APSHTTPClient/APSHTTPHelper.h \
+  /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/Ti2DMatrix.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/TiViewProxy.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/TiViewTemplate.h \
   /Users/fredstrout/Documents/Full\ Sail/AVF1/Project/AVF-1411/StroutFred_AVF1411_Project2/build/iphone/Classes/TiApp.h \

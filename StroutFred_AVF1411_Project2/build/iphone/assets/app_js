@@ -1,1 +1,1 @@
-var loginCloud=require("cloud");Ti.Database.install("/database/localDataDB.sqlite","localData");var window=Ti.UI.createWindow({backgroundImage:"/images/wallpaper.jpg",backgroundColor:"#09f"});window.open();
+var loginCloud=require("cloud"),getLocation=require("location");Ti.Database.install("/database/localDataDB.sqlite","localData");var window=Ti.UI.createWindow({backgroundImage:"/images/wallpaper.jpg",backgroundColor:"#09f"});window.open();

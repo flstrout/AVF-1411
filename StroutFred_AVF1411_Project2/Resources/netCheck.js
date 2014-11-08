@@ -28,7 +28,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		var heat = observe.heat_index_f;
 		var press = observe.pressure_in;
 		var windSpeed = observe.wind_mph;
-		var windDirection = observe.wind_dir;
+		var windDirection = observe.wind_degrees;
 		var windDegrees = observe.wind_degrees;
 		if(observe.observation_time_rfc822.substring(17, 19) >= 18 || observe.observation_time_rfc822.substring(17, 19) <= 5){
 			var night = true;

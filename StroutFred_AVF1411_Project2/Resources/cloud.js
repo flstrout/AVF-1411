@@ -1,7 +1,7 @@
 // AVF-1411 - Project 2
 // Fred L. Strout
 // Created on: 11/6/2014
-
+	
 // load the Cloud Module
 var myCloud = require('ti.cloud');
 
@@ -11,8 +11,6 @@ myCloud.debug = true;
 // Login User to the Cloud Service
 var loginUser = function(){
 	
-	var getLocation = require("location");
-
 	myCloud.Users.login({
 		login: "FredStrout617@fullsail.edu",
 		password: "Dennis44!"

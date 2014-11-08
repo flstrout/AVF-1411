@@ -5,32 +5,64 @@
 var buildUI = function(icon, location, feels, last, condition, min, max, fahrenheit, celsius, humidity, precip, heat, press, windSpeed, windDirection, windDegrees){
 	var fSize = 16;
 	
+	var btnRefresh = Ti.UI.createButton({
+		title: "Refresh",
+		width: 80,
+		height: 30,
+		borderWidth: 2,
+		borderRadius: 3,
+		borderColor: "#09f",
+		top: 90,
+		left: 15
+	});
+	
+	var compass = Ti.UI.createView({
+		top: 73,
+		//backgroundColor: "#08f",
+		height: 114,
+		width: 114,
+		borderColor: "#333",
+		borderWidth: 8,
+		borderRadius: 57
+	});
+	
 	var lblSpeed = Ti.UI.createLabel({
-		text: windSpeed + " mph",
-		top: 340,
-		font: {fontSize: fSize},
+		text: Math.round(windSpeed),
+		top: 45,
+		font: {fontSize: fSize+4, fontWeight: "bold"},
 		color: "#000"
 	});
 	
-	var lblDirection = Ti.UI.createLabel({
-		text: windDirection,
-		top: 360,
+	var lblMPH = Ti.UI.createLabel({
+		text: "mph",
+		top: 70,
 		font: {fontSize: fSize},
 		color: "#000"
 	});
 	
 	var lblWind = Ti.UI.createLabel({
 		text: "Wind",
-		top: 320,
+		top: 25,
 		font: {fontSize: fSize},
 		color: "#000"
 	});
+	compass.add(lblSpeed);
+	compass.add(lblMPH);
+	compass.add(lblWind);
+	
+	var lblDirection = Ti.UI.createImageView({
+		image: "/icons/Arrow-Icon.png",
+		top: 60,
+		height: 140,
+		width: 140
+	});
+	lblDirection.transform = Ti.UI.create2DMatrix().rotate(-windDirection);
 	
 	var lblHeat = Ti.UI.createLabel({
 		text: heat,
-		top: 360,
+		top: 370,
 		font: {fontSize: fSize},
-		left: "60%",
+		left: 0,
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -38,9 +70,9 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var lblHeat1 = Ti.UI.createLabel({
 		text: "Index",
-		top: 340,
+		top: 350,
 		font: {fontSize: fSize},
-		left: "60%",
+		left: 0,
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -48,9 +80,9 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var lblHeat2 = Ti.UI.createLabel({
 		text: "Heat",
-		top: 320,
+		top: 330,
 		font: {fontSize: fSize},
-		left: "60%",
+		left: 0,
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -58,7 +90,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var lblPress = Ti.UI.createLabel({
 		text: press + " in.",
-		top: 360,
+		top: 370,
 		font: {fontSize: fSize},
 		left: "80%",
 		width: "20%",
@@ -68,7 +100,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var lblPress1 = Ti.UI.createLabel({
 		text: "Pressure",
-		top: 340,
+		top: 350,
 		font: {fontSize: fSize},
 		left: "80%",
 		width: "20%",
@@ -78,7 +110,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	
 	var lblPress2 = Ti.UI.createLabel({
 		text: "Barometric",
-		top: 320,
+		top: 330,
 		font: {fontSize: fSize},
 		left: "80%",
 		width: "20%",
@@ -90,7 +122,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		text: precip + " in.",
 		top: 360,
 		font: {fontSize: fSize},
-		left: "20%",
+		left: "60%",
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -100,7 +132,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		text: "Precipitation",
 		top: 340,
 		font: {fontSize: fSize},
-		left: "20%",
+		left: "60%",
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -110,7 +142,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		text: humidity,
 		top: 360,
 		font: {fontSize: fSize},
-		left: 0,
+		left: "20%",
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -120,7 +152,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		text: "Humidity",
 		top: 340,
 		font: {fontSize: fSize},
-		left: 0,
+		left: "20%",
 		width: "20%",
 		textAlign: "center",
 		color: "#000"
@@ -148,7 +180,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		color: "#000"
 	});
 	
-	var lblfahrenheit = Ti.UI.createLabel({
+	var lblFahrenheit = Ti.UI.createLabel({
 		text: fahrenheit + "\u00b0" + "F",
 		top: 100,
 		font: {fontSize: 130},
@@ -207,7 +239,7 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	backGround.add(topBar);
 	backGround.add(lblLast);
 	backGround.add(lblMinMax);
-	backGround.add(lblfahrenheit);
+	backGround.add(lblFahrenheit);
 	backGround.add(lblCelsius);
 	backGround.add(lblFeels);
 	backGround.add(botBar);
@@ -221,17 +253,25 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	backGround.add(lblHeat2);
 	backGround.add(lblHeat1);
 	backGround.add(lblHeat);
-	backGround.add(lblWind);
+	backGround.add(btnRefresh);
 	backGround.add(lblDirection);
-	backGround.add(lblSpeed);
 	
 	var iconBG = Ti.UI.createView({
-		top: 65,
-		backgroundColor: "#333",
-		width: 170,
-		height: 92,
-		borderRadius: 25
+		top: backGround.top + 250,
+		width: 200,
+		height: 200,
+		opacity: .8,
+		borderRadius: 100,
+		backgroundGradient: {
+	        type: 'linear',
+	        startPoint: { x: '50%', y: '80%' },
+	        endPoint: { x: '50%', y: '100%' },
+	        colors: [ { color: "#ddd", offset: 0.0} ],
+		}
 	});
+	
+	iconBG.add(compass);
+	iconBG.add(lblDirection);
 	
 	var patch2 = Ti.UI.createView({
 		backgroundColor: "#09f",
@@ -241,14 +281,22 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	});
 	
 	var iconImage = Ti.UI.createImageView({
-		//image: "/icons/Sun/Sun1.png",
 		top: 50,
 		width:182,
 		height: 182
-		//backgroundColor: "#09f",
-		//borderRadius: 60
 	});
 	
+	var imageShell = Ti.UI.createView({
+		top: 45,
+		width: 192,
+		height: 182
+	});
+	//imageShell.add(iconImage);
+	
+	var masterView = Ti.UI.createView ();
+	masterView.add(backGround);
+	masterView.add(iconBG);
+	masterView.add(iconImage);
 	/*
 	var iconImage = Ti.UI.createWebView({
 		url: icon,
@@ -265,26 +313,23 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 	};
 	*/
 	
-	window.add(backGround);
-	//window.add(iconBG);
-	//window.add(patch2);
-	window.add(iconImage);
+	window.add(masterView);
 	
+	btnRefresh.addEventListener("click", function(){
+		masterView.remove(backGround);
+		masterView.remove(iconBG);
+		masterView.remove(iconImage);
+		
+		getLocation.currentLocation();
+	});
 	
 	// initialize the index to 1
 	var loaderIndex=1;
-	 
-	// this function will be called by the setInterval
-	function loadingAnimation(){
+	function loadingAnimation(){ // called by the setInterval function
 		
-	  // set the image property of the imageview by constructing the path with the loaderIndex variable
-	  iconImage.image = icon + loaderIndex + ".png";
-	  
-	  //increment the index so that next time it loads the next image in the sequence
-	  loaderIndex++;
-	  
-	  // if you have reached the end of the sequence, reset it to 1
-	  if(loaderIndex===25)loaderIndex=1;
+		iconImage.image = icon + loaderIndex + ".png";
+		loaderIndex++;
+		if(loaderIndex===25)loaderIndex=1;
 	}
 	 
 	// start the setInverval -- adjust the time to make a smooth animation
