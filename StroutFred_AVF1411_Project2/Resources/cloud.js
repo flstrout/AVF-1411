@@ -2,10 +2,8 @@
 // Fred L. Strout
 // Created on: 11/6/2014
 	
-// load the Cloud Module
+// load the Cloud Module in Development Mode
 var myCloud = require('ti.cloud');
-
-// Development mode
 myCloud.debug = true;
 
 // Login User to the Cloud Service
@@ -15,8 +13,6 @@ var loginUser = function(){
 		login: "FredStrout617@fullsail.edu",
 		password: "Dennis44!"
 	}, function(e){
-		
-		// use .info method to view login info in the Console, if successful
 		if (e.success){
 			getLocation.currentLocation();
 		} else {
@@ -32,6 +28,7 @@ if (Ti.Network.online === true){
 	alert("Network unavailable. Check your settings.");
 };
 
+// Update the Cloud Custom Object
 var updateCloud = function(p1, p2, p3, p4, p5, p6, p7, p8, p9, p10, p11, p12, p13, p14, p15, p16, p17){
 	myCloud.Objects.create({
 		classname: "history",

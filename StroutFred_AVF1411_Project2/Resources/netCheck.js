@@ -12,7 +12,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		var remoteData = JSON.parse(this.responseText);
 		var observe = remoteData.current_observation;
 		var forecast = remoteData.forecast.simpleforecast.forecastday[0];
-		console.log(remoteData);
+		//console.log(remoteData);
 		
 		var icon = observe.icon;
 		var location = observe.display_location.full;

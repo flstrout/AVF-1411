@@ -323,8 +323,8 @@ var buildUI = function(icon, location, feels, last, condition, min, max, fahrenh
 		getLocation.currentLocation();
 	});
 	
-	// initialize the index to 1
-	var loaderIndex=1;
+	// Animate the Weather Icon
+	var loaderIndex=1; // initialize the index to 1
 	function loadingAnimation(){ // called by the setInterval function
 		
 		iconImage.image = icon + loaderIndex + ".png";
