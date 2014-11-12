@@ -1,0 +1,10 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+
+var getNetCheck = require("netCheck");
+var urlAPI = "http://api.tvmaze.com/schedule?country=US";
+
+getNetCheck.checkNet(urlAPI);
+
+Titanium.UI.setBackgroundColor('#000');

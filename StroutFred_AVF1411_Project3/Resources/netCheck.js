@@ -8,7 +8,27 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	// Create a variable to pass to the onload property of the createHTTPClient method
 	var loadData = function (e){
 		var remoteData = JSON.parse(this.responseText);
-		console.log(remoteData);
+		var getShow = function(data){
+			for (e in data){ 
+				
+				var date = data[e].airdate;
+				var time = data[e].airtime;
+				var length = data[e].runtime;
+				var show = data[e].show.name;
+				var episode = data[e].name;
+				var network = data[e].show.network.name;
+					
+				console.log(date);
+				console.log(time);
+				console.log(length);
+				console.log(show);
+				console.log(episode);
+				console.log(network);
+				
+			};
+		};
+		getShow(remoteData);
+		
 	};	
 	// Create an alert box to display an error message for the onerror property of the createHTTPClient method
 	var errorData = function (e){
