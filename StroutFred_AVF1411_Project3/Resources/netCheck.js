@@ -9,7 +9,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	var loadData = function (e){
 		var remoteData = JSON.parse(this.responseText);
 		console.log(remoteData);
-		
+	};	
 	// Create an alert box to display an error message for the onerror property of the createHTTPClient method
 	var errorData = function (e){
 		alert("Error: " + e.error);
