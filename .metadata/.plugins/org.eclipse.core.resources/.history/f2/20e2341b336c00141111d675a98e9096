@@ -18,10 +18,9 @@ var getTimezone = require("timezone");
 getTimezone.currentLocation();
 
 var window = Ti.UI.createWindow({
-	backgroundColor: "#0f9",
+	backgroundColor: "0f9",
 	title: "TV Shows",
-	layout: "vertical",
-	top: 25
+	layout: "vertical"
 });
-Titanium.UI.setBackgroundColor("#0f9");
+Titanium.UI.setBackgroundColor('#000');
 window.open();

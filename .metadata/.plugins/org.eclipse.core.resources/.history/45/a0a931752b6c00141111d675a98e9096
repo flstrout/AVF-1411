@@ -34,7 +34,7 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	if (Ti.Network.online){ // If True, then
 		var db = Ti.Database.open ('local');
 		db.execute('DELETE FROM mod');
-		db.execute('DELETE FROM data');
+		db.execute('DELETE FROM data')
 		db.close();
 		
 		var remoteData = Ti.Network.createHTTPClient({

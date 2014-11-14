@@ -2,7 +2,6 @@
 // Fred L. Strout
 // Created: 11/11/2014
 
-var ui = require("ui");
 var tblSavedData = [];
 
 var read = function(){
@@ -24,8 +23,7 @@ var read = function(){
 	}
 	db1Rows.close();
 	db1.close();
-	ui.buildUI(tblSavedData);
-	//console.log(tblSavedData);
+	console.log(tblSavedData);
 };
 exports.read = read;
 

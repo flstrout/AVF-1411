@@ -8,26 +8,26 @@ var buildUI = function(d){
 		
 		var network_LBL = Ti.UI.createLabel({
 			text: d[i].network,
-			top: 3,
+			top: 1,
 			left: 4
 		});
 		
 		var show_LBL = Ti.UI.createLabel({
 			text: d[i].show + ": " + d[i].episode,
-			top: 25,
+			top: 20,
 			left: 4,
 			font: {fontSize: 16, fontWeight: "bold"}
 		});
 		
 		var tLength_LBL = Ti.UI.createLabel({
 			text: d[i].tLength,
-			top: 25,
+			top: 20,
 			right: 4
 		});
 		
 		var hh_LBL = Ti.UI.createLabel({
 			text: d[i].hh + d[i].mm + "  /  " + d[i].date,
-			top: 3,
+			top: 1,
 			right: 4,
 		});
 		

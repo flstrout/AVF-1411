@@ -2,7 +2,6 @@
 // Fred L. Strout
 // Created: 11/11/2014
 
-var ui = require("ui");
 var tblSavedData = [];
 
 var read = function(){
@@ -12,20 +11,18 @@ var read = function(){
 	while (db1Rows.isValidRow()){
 		tblSavedData.push({
 			id: db1Rows.fieldByName("id"),
-			date: db1Rows.fieldByName("date"),
-			hh: db1Rows.fieldByName("hh"),
-			mm: db1Rows.fieldByName("mm"),
-			tLength: db1Rows.fieldByName("length"),
-			show: db1Rows.fieldByName("show"),
-			episode: db1Rows.fieldByName("episode"),
-			network: db1Rows.fieldByName("network")
+			customer: db1Rows.fieldByName("date"),
+			date: db1Rows.fieldByName("hh"),
+			store: db1Rows.fieldByName("mm"),
+			manager: db1Rows.fieldByName("length"),
+			problem: db1Rows.fieldByName("show"),
+			promise: db1Rows.fieldByName("episode"),
+			promise: db1Rows.fieldByName("network")
 		});
 		db1Rows.next();
 	}
 	db1Rows.close();
 	db1.close();
-	ui.buildUI(tblSavedData);
-	//console.log(tblSavedData);
 };
 exports.read = read;
 

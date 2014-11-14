@@ -24,7 +24,11 @@ var read = function(){
 	}
 	db1Rows.close();
 	db1.close();
-	ui.buildUI(tblSavedData);
+	var i;
+	for (i=0; 1 < tblSavedData.length; i++){
+		var a = tblSavedData[i];
+		ui.buildUI(a.date, a.hh, a.mm, a.tLength, a.show, a.episode, a.network);
+	};
 	//console.log(tblSavedData);
 };
 exports.read = read;

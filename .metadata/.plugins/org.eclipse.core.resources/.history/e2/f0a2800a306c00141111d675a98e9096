@@ -24,7 +24,10 @@ var read = function(){
 	}
 	db1Rows.close();
 	db1.close();
-	ui.buildUI(tblSavedData);
+	var i;
+	for (i=0; 1 < tblSavedData.length; i++){
+		ui.buildUI(date, hh, mm, tLength, show, episode, network);
+	};
 	//console.log(tblSavedData);
 };
 exports.read = read;

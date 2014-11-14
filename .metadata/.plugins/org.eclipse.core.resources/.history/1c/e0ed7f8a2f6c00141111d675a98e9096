@@ -1,0 +1,49 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+
+var buildUI = function(date, hh, mm, tLength, show, episode, network){
+	
+	var network_LBL = Ti.UI.createLabel({
+		text: date,
+		top: 1,
+		left: 2
+	});
+	
+	var show_LBL = Ti.UI.createLabel({
+		text: show + ": " + episode,
+		top: 13,
+		left: 2,
+		font: {fontSize: 16, fontWeight: "bold"}
+	});
+	
+	var tLength_LBL = Ti.UI.createLabel({
+		text: tLength,
+		top: 13,
+		left: 150
+	});
+	
+	var hh_LBL = Ti.UI.createLabel({
+		text: hh + mm + "  /  " + date,
+		top: 1,
+		left: 20,
+	});
+	
+	var dataContainer = Ti.UI.createView({
+		top: 5,
+		width: "90%",
+		height: 25
+	});
+	dataContainer.add(network_LBL);
+	dataContainer.add(show_LBL);
+	dataContainer.add(tLength_LBL);
+	dataContainer.add(hh_LBL);
+};
+
+var window = Ti.UI.createWindow({
+	backgroundColor: "0f9",
+	title: "TV Shows",
+	layout: "vertical"
+});
+window.add(dataContainer);
+window.open();

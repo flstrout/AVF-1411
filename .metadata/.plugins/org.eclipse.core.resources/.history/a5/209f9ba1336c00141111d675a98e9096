@@ -14,14 +14,14 @@ var buildUI = function(d){
 		
 		var show_LBL = Ti.UI.createLabel({
 			text: d[i].show + ": " + d[i].episode,
-			top: 25,
+			top: 22,
 			left: 4,
 			font: {fontSize: 16, fontWeight: "bold"}
 		});
 		
 		var tLength_LBL = Ti.UI.createLabel({
 			text: d[i].tLength,
-			top: 25,
+			top: 22,
 			right: 4
 		});
 		

@@ -12,15 +12,22 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 		var getShow = function(data){
 			for (e in data){ 
 				var date = data[e].airdate;
-				var hh = data[e].airtime.substring(0,2);
+				var hh = parseInt(data[e].airtime.substring(0,2));
 				var mm = data[e].airtime.substring(2,5);
 				var tLength = data[e].runtime;
 				var show = data[e].show.name;
 				var episode = data[e].name;
 				var network = data[e].show.network.name;
 					
-				database.create(date, hh, mm, tLength, show, episode, network);
+				console.log(date);
+				console.log(hh);
+				console.log(mm);
+				console.log(length);
+				console.log(show);
+				console.log(episode);
+				console.log(network);
 			};
+			database.create(date, hh, mm, tLength, show, episode, network);
 		};
 		getShow(remoteData);
 		
@@ -34,7 +41,6 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	if (Ti.Network.online){ // If True, then
 		var db = Ti.Database.open ('local');
 		db.execute('DELETE FROM mod');
-		db.execute('DELETE FROM data');
 		db.close();
 		
 		var remoteData = Ti.Network.createHTTPClient({

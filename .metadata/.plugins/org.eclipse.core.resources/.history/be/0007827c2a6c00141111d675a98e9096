@@ -10,7 +10,7 @@ var timezoneDB = require("tzModDB");
 var loadData = function (e){
 	var remoteData = JSON.parse(this.responseText);
 	var timezone = remoteData.timeZoneName;
-	timezoneDB.create(timezone);
+	timezoneDB.create("test");
 	console.log("From function: " + timezone);
 };
 

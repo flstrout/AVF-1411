@@ -17,11 +17,4 @@ getNetCheck.checkNet(urlAPI);
 var getTimezone = require("timezone");
 getTimezone.currentLocation();
 
-var window = Ti.UI.createWindow({
-	backgroundColor: "#0f9",
-	title: "TV Shows",
-	layout: "vertical",
-	top: 25
-});
-Titanium.UI.setBackgroundColor("#0f9");
-window.open();
+Titanium.UI.setBackgroundColor('#000');
