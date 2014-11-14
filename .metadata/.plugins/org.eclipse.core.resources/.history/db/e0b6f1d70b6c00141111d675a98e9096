@@ -1,0 +1,6 @@
+var utcTime = new Date();
+var offset = utcTime.getTimezoneOffset()/60;
+
+var localTime = utcTime + offset;
+
+alert(offset);
