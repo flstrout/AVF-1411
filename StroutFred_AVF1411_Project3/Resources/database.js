@@ -2,24 +2,22 @@
 // Fred L. Strout
 // Created: 11/11/2014
 
-Ti.Database.install("/database/local.sqlite", "local");
-var getNew = require("new");
-
 var tblSavedData = [];
 
 var read = function(){
 	var db1 = Ti.Database.open("local");
-	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , customer TEXT, date TEXT, store TEXT, manager TEXT, problem TEXT, promise TEXT)");
-	var db1Rows = db1.execute("SELECT id, customer, date, store, manager, problem, promise FROM data");
+	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT)");
+	var db1Rows = db1.execute("SELECT id, date, hh, mm, length, show, episode, network FROM data");
 	while (db1Rows.isValidRow()){
 		tblSavedData.push({
 			id: db1Rows.fieldByName("id"),
-			customer: db1Rows.fieldByName("customer"),
-			date: db1Rows.fieldByName("date"),
-			store: db1Rows.fieldByName("store"),
-			manager: db1Rows.fieldByName("manager"),
-			problem: db1Rows.fieldByName("problem"),
-			promise: db1Rows.fieldByName("promise")
+			customer: db1Rows.fieldByName("date"),
+			date: db1Rows.fieldByName("hh"),
+			store: db1Rows.fieldByName("mm"),
+			manager: db1Rows.fieldByName("length"),
+			problem: db1Rows.fieldByName("show"),
+			promise: db1Rows.fieldByName("episode"),
+			promise: db1Rows.fieldByName("network")
 		});
 		db1Rows.next();
 	}
@@ -28,10 +26,10 @@ var read = function(){
 };
 exports.read = read;
 
-var create = function (p1, p2, p3, p4, p5, p6){
+var create = function (p1, p2, p3, p4, p5, p6, p7){
 	var db1 = Ti.Database.open("local");
-	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , customer TEXT, date TEXT, store TEXT, manager TEXT, problem TEXT, promised TEXT)");
-	db1.execute("INSERT INTO data (customer, date, store, manager, problem, promise) VALUES (?, ?, ?, ?, ?, ?)", p1, p2, p3, p4, p5, p6);
+	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT)");
+	db1.execute("INSERT INTO data (date, hh, mm, length, show, episode, network) VALUES (?, ?, ?, ?, ?, ?, ?)", p1, p2, p3, p4, p5, p6, p7);
 	var rowID = db1.lastInsertRowId;
 	db1.close();
 	tblSavedData = [];
@@ -39,7 +37,7 @@ var create = function (p1, p2, p3, p4, p5, p6){
 };
 exports.create = create;
 
-var update = function (p1, p2, p3, p4, p5, p6, p7){
+/*var update = function (p1, p2, p3, p4, p5, p6, p7){
 	var db1 = Ti.Database.open("local");
 	db1.execute("UPDATE data SET customer=?, date=?, store=?, manager=?, problem=?, promise=? WHERE id=?", p1, p2, p3, p4, p5, p6, p7);
 	db1.close();
@@ -55,6 +53,6 @@ var del = function(id){
 	tblSavedData = [];
 	read();
 };
-exports.del = del;
+exports.del = del;*/
 
 exports.tblSavedData = tblSavedData;

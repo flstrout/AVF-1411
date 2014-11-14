@@ -1,18 +1,17 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+
 var apiKey = "AIzaSyCskVBpaWEWgR2CABHKQ1coss0fT6c6o24";
 var date = new Date();
 var epoch = Math.round(date.getTime() / 1000);
+var timezoneDB = require("tzModDB");
 
 var loadData = function (e){
 	var remoteData = JSON.parse(this.responseText);
-	if (remoteData.timeZoneName.substring(0, 4) == "Moun"){
-		var tzModifier = -1;
-	} else if (remoteData.timeZoneName.substring(0, 4) == "Cent"){
-		var tzModifier = 1;
-	} else {
-		var tzModifier = 0;
-	};
-	console.log(remoteData);
-	console.log(tzModifier);
+	var timezone = remoteData.timeZoneName;
+	timezoneDB.create("test");
+	console.log("From function: " + timezone);
 };
 
 var errorData = function (e){
@@ -40,10 +39,11 @@ var currentLocation = function(){
 			var lon = -122.029583;
 		};
 		var coordinates = lat + "," + lon;
-		//console.log(coordinates);
+		// console.log(coordinates);
 		var urlAPI = "https://maps.googleapis.com/maps/api/timezone/json?location=" + coordinates + "&timestamp=" + epoch + "&key=" + apiKey;
-		console.log(urlAPI);
+		// console.log(urlAPI);
 		getLocalTime(urlAPI);
+		//console.log(loadData);
 	});
 	
 };

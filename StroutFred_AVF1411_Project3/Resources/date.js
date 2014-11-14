@@ -22,7 +22,7 @@ var todayDate = function(a){
 	
 	today = yyyy + "-" + mm + "-" + dd;
 	date = today;
-	console.log(today);
+	//console.log(today);
 	return date;
 };
 //console.log(today);
