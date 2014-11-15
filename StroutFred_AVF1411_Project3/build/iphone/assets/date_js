@@ -1,0 +1,1 @@
+var today="",todayDate=function(e){today=new Date;var t=today.getMonth()+1,a=today.getDate()+e,i=today.getFullYear();return 10>t&&(t="0"+t),10>a&&(a="0"+a),today=i+"-"+t+"-"+a,date=today};exports.todayDate=todayDate;

@@ -1,0 +1,1 @@
+var i=0,n=0,gallery=Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory,"images"),myImages=gallery.getDirectoryListing(),j=myImages.length;i=Math.floor(Math.random()*j);var nextImage=function(){imageView.image="images/"+myImages[i];do n=Math.floor(Math.random()*j);while(i===n);i=n},imageView="images/"+myImages[i];nextImage(),Titanium.UI.setBackgroundImage(imageView);

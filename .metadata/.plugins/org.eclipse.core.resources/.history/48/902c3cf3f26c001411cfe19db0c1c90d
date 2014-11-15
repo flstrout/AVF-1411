@@ -1,0 +1,46 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+var color = "#09f";
+Titanium.UI.setBackgroundColor(color);
+Ti.Database.install("/database/timezone.sqlite", "local");
+var date = "";
+
+var getDate = require("date");
+var getNetCheck = require("netCheck");
+getDate.todayDate(1);
+//console.log(date);
+var urlAPI = "http://api.tvmaze.com/schedule?country=US&date="+date;
+
+getNetCheck.checkNet(urlAPI);
+
+var getTimezone = require("timezone");
+getTimezone.currentLocation();
+
+var masterView = Ti.UI.createScrollView({
+	backgroundColor: color,
+	scrollType: "vertical",
+	layout: "vertical"
+});
+
+var lblTitle = Ti.UI.createLabel({
+	text: "Primetime Channel Lineup",
+	font: {fontSize: 22, fontWeight: "bold"},
+	top: 15
+});
+
+var lblDate = Ti.UI.createLabel({
+	text: date.substring(5,7) + "/" + date.substring(8,12) + "/" + date.substring(0,4),
+	font: {fontSize: 32, fontWeight: "bold"}
+});
+
+var window = Ti.UI.createWindow({
+	backgroundColor: color,
+	layout: "vertical",
+	top: 5
+});
+window.add(lblTitle);
+window.add(lblDate);
+window.add(masterView);
+
+window.open();
