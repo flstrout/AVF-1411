@@ -24,7 +24,7 @@ var buildUI = function(d){
 		
 		var tLength_LBL = Ti.UI.createLabel({
 			text: Math.floor(d[i].tLength) + " min",
-			top: 27,
+			top: 25,
 			right: 4,
 			font: {fontSize: fSize}
 		});

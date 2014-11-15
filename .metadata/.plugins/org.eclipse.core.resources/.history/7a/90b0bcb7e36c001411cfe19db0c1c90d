@@ -8,7 +8,7 @@ var date = "";
 
 var getDate = require("date");
 var getNetCheck = require("netCheck");
-getDate.todayDate(1);
+getDate.todayDate(0);
 //console.log(date);
 var urlAPI = "http://api.tvmaze.com/schedule?country=US&date="+date;
 
