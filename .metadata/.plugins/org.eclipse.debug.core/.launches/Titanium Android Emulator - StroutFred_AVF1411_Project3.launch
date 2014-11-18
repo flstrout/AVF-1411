@@ -2,7 +2,7 @@
 <launchConfiguration type="com.appcelerator.titanium.mobile.ui.android.simulator.launchConfigurationType">
 <stringAttribute key="ATTR_PROJECT_NAME" value="StroutFred_AVF1411_Project3"/>
 <stringAttribute key="abi" value="armeabi"/>
-<stringAttribute key="device-id" value="Google Nexus 7 2013 - 4.4.4 - API 19 - 1200x1920"/>
+<stringAttribute key="device-id" value="Samsung Galaxy S3 - 4.3 - API 18 - 720x1280"/>
 <listAttribute key="org.eclipse.debug.core.MAPPED_RESOURCE_PATHS">
 <listEntry value="/StroutFred_AVF1411_Project3"/>
 </listAttribute>

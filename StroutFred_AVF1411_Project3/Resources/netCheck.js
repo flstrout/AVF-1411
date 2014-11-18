@@ -7,41 +7,11 @@ var database = require("database");
 var netCheck = function(url){ // pass in the url from the function call for improved modularization
 	
 	// Create a variable to pass to the onload property of the createHTTPClient method
-	var loadData = function (e){
-		
+	var loadData = function (e){		
 		var remoteData = JSON.parse(this.responseText);
 		var getShow = function(data){
 			for (e in data){
-				
-				// Episode Detail API Pull
-				var id1Ref = data[e].id;
-				var remoteData1 = Ti.Network.createHTTPClient({
-					onload: function(e){
-						var remoteData1 = JSON.parse(this.responseText);
-						console.log("Episode Synopsis: "+remoteData1.summary.replace( /<[^>]+>/g, '' ));
-					},
-					onerror: errorData
-				});
-				var url1 = "http://api.tvmaze.com/episodes/"+id1Ref;
-				remoteData1.open("GET", url1);
-				remoteData1.send();
-				// End Episode Detail API Pull
-				
-				// Show Detail API Pull
-				var id2Ref = data[e].show.id;
-				var remoteData2 = Ti.Network.createHTTPClient({
-					onload: function(e){
-						var remoteData2 = JSON.parse(this.responseText);
-						console.log("Show Synopsis: "+remoteData2.summary.replace( /<[^>]+>/g, '' ));
-						console.log(remoteData2.image.medium);
-					},
-					onerror: errorData
-				});
-				var url2 = "http://api.tvmaze.com/shows/"+id2Ref;
-				remoteData2.open("GET", url2);
-				remoteData2.send();
-				// End Show Detail API Pull
-				
+				// Show Data API Pull
 				var date = data[e].airdate;
 				var hh = data[e].airtime.substring(0,2);
 				var mm = data[e].airtime.substring(2,5);
@@ -49,19 +19,55 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 				var show = data[e].show.name;
 				var episode = data[e].name;
 				var network = data[e].show.network.name;
+				var id1 = data[e].id;
+				var id2 = data[e].show.id;
+				// Send variables to database
+				database.create(date, hh, mm, tLength, show, episode, network, id1, id2);
 				
-				database.create(date, hh, mm, tLength, show, episode, network);
+				// Episode Detail API Pull - Begin
+				var remoteData1 = Ti.Network.createHTTPClient({
+					onload: function(){
+						var remoteData1 = JSON.parse(this.responseText);
+						var id1a = remoteData1.id;
+						var epSyn = "Episode Synopsis: " + remoteData1.summary.replace( /<[^>]+>/g, '' );
+						
+						//console.log(id1);
+						//console.log(epSyn);
+						// Update the data table with the newly pulled episode information
+						database.update1(epSyn, id1a);
+					},
+					onerror: function (e){
+						alert("Error: " + e.error);
+					}
+				});
+				var url1 = "http://api.tvmaze.com/episodes/"+id1;
+				remoteData1.open("GET", url1);
+				remoteData1.send(); // Episode Detail API Pull - End
 				
-				console.log (date);
-				console.log (hh);
-				console.log (mm);
-				console.log (tLength);
-				console.log (show);
-				console.log (episode);
-				console.log (network);
+				// Show Detail API Pull - Begin
+				var remoteData2 = Ti.Network.createHTTPClient({
+					onload: function(){
+						var remoteData2 = JSON.parse(this.responseText);
+						var id2a = remoteData2.id;
+						var shSyn = "Show Synopsis: " + remoteData2.summary.replace( /<[^>]+>/g, '' );
+						var shImg = remoteData2.image.medium;
+						
+						//console.log(id2a);
+						//console.log(shSyn);
+						// Update the data table with the newly pulled show information
+						database.update2(shSyn, shImg, id2a);
+					},
+					onerror: function (e){
+						alert("Error: " + e.error);
+					}
+				});
+				var url2 = "http://api.tvmaze.com/shows/"+id2;
+				remoteData2.open("GET", url2);
+				remoteData2.send(); // Show Detail API Pull - End
 				
+				};
 			};
-		};
+		
 		getShow(remoteData);
 		
 	};	
