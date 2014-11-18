@@ -8,9 +8,40 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 	
 	// Create a variable to pass to the onload property of the createHTTPClient method
 	var loadData = function (e){
+		
 		var remoteData = JSON.parse(this.responseText);
 		var getShow = function(data){
-			for (e in data){ 
+			for (e in data){
+				
+				// Episode Detail API Pull
+				var id1Ref = data[e].id;
+				var remoteData1 = Ti.Network.createHTTPClient({
+					onload: function(e){
+						var remoteData1 = JSON.parse(this.responseText);
+						console.log("Episode Synopsis: "+remoteData1.summary.replace( /<[^>]+>/g, '' ));
+					},
+					onerror: errorData
+				});
+				var url1 = "http://api.tvmaze.com/episodes/"+id1Ref;
+				remoteData1.open("GET", url1);
+				remoteData1.send();
+				// End Episode Detail API Pull
+				
+				// Show Detail API Pull
+				var id2Ref = data[e].show.id;
+				var remoteData2 = Ti.Network.createHTTPClient({
+					onload: function(e){
+						var remoteData2 = JSON.parse(this.responseText);
+						console.log("Show Synopsis: "+remoteData2.summary.replace( /<[^>]+>/g, '' ));
+						console.log(remoteData2.image.medium);
+					},
+					onerror: errorData
+				});
+				var url2 = "http://api.tvmaze.com/shows/"+id2Ref;
+				remoteData2.open("GET", url2);
+				remoteData2.send();
+				// End Show Detail API Pull
+				
 				var date = data[e].airdate;
 				var hh = data[e].airtime.substring(0,2);
 				var mm = data[e].airtime.substring(2,5);
@@ -18,8 +49,17 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 				var show = data[e].show.name;
 				var episode = data[e].name;
 				var network = data[e].show.network.name;
-					
+				
 				database.create(date, hh, mm, tLength, show, episode, network);
+				
+				console.log (date);
+				console.log (hh);
+				console.log (mm);
+				console.log (tLength);
+				console.log (show);
+				console.log (episode);
+				console.log (network);
+				
 			};
 		};
 		getShow(remoteData);

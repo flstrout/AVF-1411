@@ -4,12 +4,13 @@
 
 var background = require("background");
 
+var day = 1;
 var date = "";
 var getDate = require("date");
 var getNetCheck = require("netCheck");
 
 // pass the desired date to the todayDate function - 0=today, 1=tomorrow, etc...
-getDate.todayDate(1);
+getDate.todayDate(day);
 
 // concatenate the date into the url variable
 var urlAPI = "http://api.tvmaze.com/schedule?country=US&date="+date;
