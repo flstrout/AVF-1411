@@ -2,8 +2,8 @@
 // Fred L. Strout
 // Created: 11/11/2014
 
-var background = require("background");
-
+//var background = require("background");
+Ti.UI.setBackgroundColor("#09f");
 var day = 1;
 var date = "";
 var getDate = require("date");
@@ -25,9 +25,7 @@ getTimezone.currentLocation();*/
 // create masterView(Scroll View) and Window Shell
 var masterView = Ti.UI.createScrollView({
 	//backgroundColor: color,
-	scrollType: "vertical",
-	layout: "vertical",
-	top: 5
+	scrollType: "vertical"
 });
 
 var lblTitle = Ti.UI.createLabel({

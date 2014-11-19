@@ -10,7 +10,7 @@ var read = function(){
 	//console.log(tblSavedData);
 	var db1 = Ti.Database.open("local");
 	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT, id1 INTEGER, id2 INTEGER, epSyn TEXT, shSyn TEXT, shImg TEXT)");
-	var db1Rows = db1.execute("SELECT id, date, hh, mm, length, show, episode, network, epSyn, shSyn, shImg FROM data");
+	var db1Rows = db1.execute("SELECT id, date, hh, mm, length, show, episode, network, id1, shSyn, shImg FROM data");
 	while (db1Rows.isValidRow()){
 		tblSavedData.push({
 			date: db1Rows.fieldByName("date"),
@@ -20,7 +20,7 @@ var read = function(){
 			show: db1Rows.fieldByName("show"),
 			episode: db1Rows.fieldByName("episode"),
 			network: db1Rows.fieldByName("network"),
-			epSyn: db1Rows.fieldByName("epSyn"),
+			epID: db1Rows.fieldByName("id1"),
 			shSyn: db1Rows.fieldByName("shSyn"),
 			shImg: db1Rows.fieldByName("shImg")
 		});
@@ -48,7 +48,7 @@ var update1 = function (p1, p2){
 	var db1 = Ti.Database.open("local");
 	db1.execute("UPDATE data SET epSyn=? WHERE id1=?", p1, p2);
 	db1.close();
-	tblSavedData = [];
+	//tblSavedData = [];
 	//read();
 };
 exports.update1 = update1;
@@ -57,8 +57,8 @@ var update2 = function (p1, p2, p3){
 	var db1 = Ti.Database.open("local");
 	db1.execute("UPDATE data SET shSyn=?, shImg=? WHERE id2=?", p1, p2, p3);
 	db1.close();
-	tblSavedData = [];
-	read();
+	//tblSavedData = [];
+	//read();
 };
 exports.update2 = update2;
 

@@ -1,14 +1,37 @@
 // AVF-1411 - Project 3
 // Fred L. Strout
 // Created: 11/11/2014
+
+var getDetail = require("detail");
 var fSize = 14;
 var defOp = .8;
 
 var buildUI = function(d){
 	var i;
-	for (i=0; i < d.length; i++){
-
-		// converts 24 hour time (military time) to 12 hour time.
+	//for (i=0; i < d.length; i++){
+	var shows = Ti.UI.createTableView({
+		top: 45,
+		backgroundColor: "#bf0c0c",
+		separatorColor: "#bf0c0c"
+	});
+	var list = [];
+	var tableSection = Ti.UI.createTableViewSection();
+	list.push(tableSection);
+	for (o in d){ 
+		var sectionDetail = Ti.UI.createTableViewRow({
+			id: d[o].epID,
+			title: d[o].show,
+			/*date: d[o].date,
+			problem: d[o].problem,
+			promise: d[o].promise,
+			manager: d[o].manager,*/
+			hasChild: true,
+			backgroundColor: "#eee"
+		});
+		tableSection.add(sectionDetail);
+		exports.sectionDetail = sectionDetail;
+	};
+		/*// converts 24 hour time (military time) to 12 hour time.
 		if (d[i].hh > 12){
 			var ampm = "pm";
 		}else{
@@ -67,9 +90,15 @@ var buildUI = function(d){
 		dataContainer.add(show_LBL);
 		dataContainer.add(tLength_LBL);
 		dataContainer.add(hh_LBL);
-		
+		dataContainer.addEventListener("click", function(event){
+			detWin();
+		});*/
+		shows.setData(list);
+		shows.addEventListener("click", function(event){
+			console.log(event.source.id +" : "+event.source.title);
+			getDetail.loadDetail(event.source);
+		});
+		masterView.add(shows);
 	};
-	masterView.add(dataContainer);
 	
-};
 exports.buildUI = buildUI;

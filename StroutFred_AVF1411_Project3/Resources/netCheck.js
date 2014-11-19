@@ -78,10 +78,10 @@ var netCheck = function(url){ // pass in the url from the function call for impr
 				var network = data[e].show.network.name;
 				var epID = data[e].id;
 				var shID = data[e].show.id;
-				//database.create(date, hh, mm, tLength, show, episode, network);
+				database.create(date, hh, mm, tLength, show, episode, network, epID, shID);
 				console.log(show+": "+episode);
-				epData(epID);
-				shData(shID);
+				//epData(epID);
+				//shData(shID);
 			};
 		};
 		getShow(remoteData);
