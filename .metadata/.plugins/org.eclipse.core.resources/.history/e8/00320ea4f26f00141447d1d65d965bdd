@@ -1,0 +1,32 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+
+var i = 0;
+var n = 0;
+var gallery = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images");
+var myImages = gallery.getDirectoryListing();
+var j = myImages.length;
+
+
+// Forces the first image to be random
+i = Math.floor((Math.random()*j));
+
+// Updates the onscreen image to the random image and runs the code to get the next random image
+var nextImage = function(){
+ 	imageView.image = "images/"+myImages[i];
+ 	
+	do {
+		n = Math.floor((Math.random()*j));
+	}while (i===n);
+	// Sets the new random image to the 'i' variable
+	i = n;
+};
+
+var imageView = "images/"+myImages[i];
+
+nextImage();
+Titanium.UI.setBackgroundImage(imageView);
+alert("Welcome to my show guide.\nPress OK to proceed.");
+Titanium.UI.setBackgroundImage("");
+Ti.UI.setBackgroundColor("#090f");

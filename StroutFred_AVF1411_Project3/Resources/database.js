@@ -4,8 +4,10 @@
 
 var ui = require("ui");
 var tblSavedData = [];
+//tblSavedData.length = 0;
 
 var read = function(){
+	//console.log(tblSavedData);
 	var db1 = Ti.Database.open("local");
 	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT, id1 INTEGER, id2 INTEGER, epSyn TEXT, shSyn TEXT, shImg TEXT)");
 	var db1Rows = db1.execute("SELECT id, date, hh, mm, length, show, episode, network, epSyn, shSyn, shImg FROM data");
@@ -26,8 +28,8 @@ var read = function(){
 	}
 	db1Rows.close();
 	db1.close();
-	//ui.buildUI(tblSavedData);
-	console.log(tblSavedData);
+	ui.buildUI(tblSavedData);
+	//console.log(tblSavedData);
 };
 exports.read = read;
 
@@ -38,7 +40,7 @@ var create = function (p1, p2, p3, p4, p5, p6, p7, p8, p9){
 	var rowID = db1.lastInsertRowId;
 	db1.close();
 	tblSavedData = [];
-	//read();
+	read();
 };
 exports.create = create;
 

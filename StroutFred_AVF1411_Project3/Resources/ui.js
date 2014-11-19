@@ -37,7 +37,7 @@ var buildUI = function(d){
 			width: "78%",
 			font: {fontSize: 16, fontWeight: "bold"}
 		});
-		
+		console.log(d[i].show);
 		var tLength_LBL = Ti.UI.createLabel({
 			text: Math.floor(d[i].tLength) + " min",
 			top: 27,
@@ -67,8 +67,9 @@ var buildUI = function(d){
 		dataContainer.add(show_LBL);
 		dataContainer.add(tLength_LBL);
 		dataContainer.add(hh_LBL);
+		
 	};
-	
 	masterView.add(dataContainer);
+	
 };
 exports.buildUI = buildUI;

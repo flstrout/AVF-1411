@@ -1,0 +1,46 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+
+var splash = function(){
+	var i = 0;
+	var n = 0;
+	var gallery = Ti.Filesystem.getFile(Ti.Filesystem.resourcesDirectory, "images");
+	var myImages = gallery.getDirectoryListing();
+	var j = myImages.length;
+	
+	
+	// Forces the first image to be random
+	i = Math.floor((Math.random()*j));
+	
+	// Updates the onscreen image to the random image and runs the code to get the next random image
+	var nextImage = function(){
+	 	imageView.image = "images/"+myImages[i];
+	 	
+		do {
+			n = Math.floor((Math.random()*j));
+		}while (i===n);
+		// Sets the new random image to the 'i' variable
+		i = n;
+	};
+	
+	var imageView = "images/"+myImages[i];
+	
+	nextImage();
+	
+	var splashView = Ti.UI.createImageView({
+		image: imageView
+	});
+	
+	var dialog = Ti.UI.createView({
+		title: "Welcome!",
+		height: 200,
+		width: 300
+	});
+	splashView.add(dialog);
+	
+	splashView.show();
+	
+	
+};
+exports.splash = splash;
