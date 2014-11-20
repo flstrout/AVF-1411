@@ -9,8 +9,8 @@ var tblSavedData = [];
 var read = function(){
 	//console.log(tblSavedData);
 	var db1 = Ti.Database.open("local");
-	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT, id1 INTEGER, id2 INTEGER, epSyn TEXT, shSyn TEXT, shImg TEXT)");
-	var db1Rows = db1.execute("SELECT id, date, hh, mm, length, show, episode, network, id1, shSyn, shImg FROM data");
+	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT, id1 TEXT, id2 TEXT)");
+	var db1Rows = db1.execute("SELECT id, date, hh, mm, length, show, episode, network, id1, id2 FROM data");
 	while (db1Rows.isValidRow()){
 		tblSavedData.push({
 			date: db1Rows.fieldByName("date"),
@@ -20,22 +20,22 @@ var read = function(){
 			show: db1Rows.fieldByName("show"),
 			episode: db1Rows.fieldByName("episode"),
 			network: db1Rows.fieldByName("network"),
-			epID: db1Rows.fieldByName("id1"),
-			shSyn: db1Rows.fieldByName("shSyn"),
-			shImg: db1Rows.fieldByName("shImg")
+			id1: db1Rows.fieldByName("id1"),
+			id2: db1Rows.fieldByName("id2")
 		});
 		db1Rows.next();
+		
 	}
 	db1Rows.close();
 	db1.close();
 	ui.buildUI(tblSavedData);
-	//console.log(tblSavedData);
+	
 };
 exports.read = read;
 
 var create = function (p1, p2, p3, p4, p5, p6, p7, p8, p9){
 	var db1 = Ti.Database.open("local");
-	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT, id1 INTEGER, id2 INTEGER, epSyn TEXT, shSyn TEXT, shImg TEXT)");
+	db1.execute("CREATE TABLE IF NOT EXISTS data (id INTEGER PRIMARY KEY , date TEXT, hh TEXT, mm TEXT, length TEXT, show TEXT, episode TEXT, network TEXT, id1 TEXT, id2 TEXT)");
 	db1.execute("INSERT INTO data (date, hh, mm, length, show, episode, network, id1, id2) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)", p1, p2, p3, p4, p5, p6, p7, p8, p9);
 	var rowID = db1.lastInsertRowId;
 	db1.close();

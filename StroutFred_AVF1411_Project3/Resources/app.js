@@ -2,12 +2,13 @@
 // Fred L. Strout
 // Created: 11/11/2014
 
-//var background = require("background");
-Ti.UI.setBackgroundColor("#09f");
+Ti.Database.install("/database/timezone.sqlite", "local");
+var background = require("background");
+//Ti.UI.setBackgroundColor("#09f");
 var day = 1;
 var date = "";
 var getDate = require("date");
-var getNetCheck = require("netCheck");
+var load = require("load");
 
 // pass the desired date to the todayDate function - 0=today, 1=tomorrow, etc...
 getDate.todayDate(day);
@@ -15,46 +16,37 @@ getDate.todayDate(day);
 // concatenate the date into the url variable
 var urlAPI = "http://api.tvmaze.com/schedule?country=US&date="+date;
 
-// check for net and build UI elements
-getNetCheck.checkNet(urlAPI);
+var loadData = function(){
+	load.loadIt(urlAPI);
+	splash.close();
+};
 
-// get timezone data from google api and pass the timezone modifier into a DB table
-/*var getTimezone = require("timezone");
-getTimezone.currentLocation();*/
-
-// create masterView(Scroll View) and Window Shell
-var masterView = Ti.UI.createScrollView({
-	//backgroundColor: color,
-	scrollType: "vertical"
+var lblSplash = Ti.UI.createLabel({
+	text: 'Welcome to the Prime Time\nChannel Lineup App\nPress \'OK\' to proceed.',
+	font: {fontWeight: "bold", fontSize: 16},
+	top: 6,
+	textAlign: "center"
 });
 
-var lblTitle = Ti.UI.createLabel({
-	text: "Primetime Channel Lineup",
-	font: {fontSize: 22, fontWeight: "bold"},
-	top: 2
+var btnSplash = Ti.UI.createLabel({
+	backgroundColor: "#6fc",
+	borderColor: "#222",
+	borderRadius: 4,
+	text: "OK", textAlign: "center",
+	font: {fontWeight: "bold", fontSize: 18},
+	top: 75,
+	width: 120, height: 35
 });
+btnSplash.addEventListener("click", loadData);
 
-var lblDate = Ti.UI.createLabel({
-	text: date.substring(5,7) + "/" + date.substring(8,12) + "/" + date.substring(0,4),
-	font: {fontSize: 32, fontWeight: "bold"}
-});
-
-var titleFrame = Ti.UI.createView({
+var splash = Ti.UI.createWindow({
+	title: 'Welcome to the Prime Time\nChannel Lineup App\nPress \'OK\' to proceed.',
+	width: 240, height: 120,
 	backgroundColor: "#fff",
-	height: 70, width: 300,
-	borderRadius: 20,
-	top: 15,
-	opacity: .8,
-	layout: "vertical"
+	opacity: .9,
+	top: "28%",
+	borderRadius: 7
 });
-titleFrame.add(lblTitle);
-titleFrame.add(lblDate);
-var window = Ti.UI.createWindow({
-	//backgroundColor: color,
-	layout: "vertical",
-	top: 5
-});
-window.add(titleFrame);
-window.add(masterView);
-
-window.open();
+splash.add(btnSplash);
+splash.add(lblSplash);
+splash.open();

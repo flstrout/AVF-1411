@@ -1,0 +1,44 @@
+// AVF-1411 - Project 3
+// Fred L. Strout
+// Created: 11/11/2014
+
+var background = require("background");
+//Ti.UI.setBackgroundColor("#09f");
+var day = 1;
+var date = "";
+var getDate = require("date");
+
+// pass the desired date to the todayDate function - 0=today, 1=tomorrow, etc...
+getDate.todayDate(day);
+
+// concatenate the date into the url variable
+var urlAPI = "http://api.tvmaze.com/schedule?country=US&date="+date;
+
+var lblSplash = Ti.UI.createLabel({
+	text: 'Welcome to the Prime Time\nChannel Lineup App\nPress \'OK\' to proceed.',
+	font: {fontWeight: "bold", fontSize: 16},
+	top: 2,
+	textAlign: "center"
+});
+
+var btnSplash = Ti.UI.createLabel({
+	backgroundColor: "#6fc",
+	borderColor: "#222",
+	borderRadius: 4,
+	text: "OK", textAlign: "center",
+	font: {fontWeight: "bold", fontSize: 18},
+	top: 75,
+	width: 120, height: 35
+});
+
+var splash = Ti.UI.createWindow({
+	title: 'Welcome to the Prime Time\nChannel Lineup App\nPress \'OK\' to proceed.',
+	width: 240, height: 120,
+	backgroundColor: "#fff",
+	opacity: .9,
+	top: "28%",
+	borderRadius: 7
+});
+splash.add(btnSplash);
+splash.add(lblSplash);
+splash.open();

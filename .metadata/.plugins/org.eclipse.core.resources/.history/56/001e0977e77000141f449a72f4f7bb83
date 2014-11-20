@@ -1,0 +1,120 @@
+var loadDetail = function(dataSource){
+	console.log("EpisodeID : "+Math.floor(dataSource.id1));
+	//* function to pull epsiode data from a different TVMaze API
+	var epData = function(url){
+		var apiURL = "http://api.tvmaze.com/episodes/"+url;
+		// Create a variable to pass to the onload property of the createHTTPClient method
+		var loadData = function (e){
+			var remoteData = JSON.parse(this.responseText);
+			var getShow = function(data){
+				var epSyn = "Episode Synopsis: " + data.summary.replace( /<[^>]+>/g, '' );
+				var episode = data.episode;
+				//var epImg = data.image.medium;
+				var hh = data.airtime.substring(0,2);
+				var mm = data.airtime.substring(2,5);
+				if (hh > 12){
+					var ampm = "pm";
+				}else{
+					var ampm = "am";
+				};
+				
+				if (hh === "00"){
+					var HH = 12;
+				}else if (hh >12){
+					var HH = hh - 12;
+				}else{
+					var HH = hh;
+				};
+	
+				var closeWin = function(){
+					detailWindow.close();
+				};
+				
+				// Creates the Opportunty Detail Window
+				var detailWindow = Ti.UI.createWindow({
+					backgroundColor: "#09f",
+					title: "Epsiode Details",
+					statusBarStyle: 2,
+					barColor: "#bf0c0c",
+					titleAttributes: {color: "#fc0"}
+				});
+				
+				var btnClose = Ti.UI.createLabel({
+					text: "Close",
+					font: {fontSize: 18, fontWeight: "bold"},
+					color: "#222", textAlign: "center",
+					backgroundColor: "#6fc",
+					borderColor: "#222",
+					borderRadius: 4,
+					top: 700, height: 35, width: 120
+				});
+				btnClose.addEventListener("click", closeWin);
+				
+				// Labels
+				var lblDate = Ti.UI.createLabel({
+					text: "Date:",
+					font: {fontSize: 14, fontFamily: "Helvetica Neue", fontWeight: "bold"},
+					color: "#eee",
+					top: 25,
+					height: 14,
+					left: 213
+				});
+				
+				/*var imgEpisode = Ti.UI.createImageView({
+					image: epImg,
+					top: 125,
+					height: 200,
+					left: 20
+				});*/
+				
+				var dataEpisode = Ti.UI.createLabel({
+					text: dataSource.episode,
+					font: {fontSize: 26, fontWeight: "bold"},
+					color: "#666",
+					top: 80,
+					left: 20
+				});
+				
+				var dataShow = Ti.UI.createLabel({
+					text: dataSource.showTitle,
+					font: {fontSize: 30, fontWeight: "bold"},
+					color: "#222",
+					top: 25,
+					left: 20
+				});
+				
+				var dataSummary = Ti.UI.createLabel({
+					text: epSyn,
+					font: {fontSize: 18, fontFamily: "Helvetica Neue", fontWeight: "bold"},
+					color: "#ffcc00",textAlign:"left",
+					top: 200,
+					width: "80%",
+					height: 100
+				});
+				
+				detailWindow.add(btnClose);
+				detailWindow.add(dataSummary);
+				detailWindow.add(dataShow);
+				detailWindow.add(dataEpisode);
+				//detailWindow.add(imgEpisode);
+				
+				detailWindow.open();
+				};
+			getShow(remoteData);
+		};
+		// Create an alert box to display an error message for the onerror property of the createHTTPClient method
+		var errorData = function (e){
+			alert("Error: " + e.error);
+		};
+		var remoteData = Ti.Network.createHTTPClient({
+			onload: loadData,
+			onerror: errorData
+		});
+		remoteData.open("GET", apiURL);
+		remoteData.send();
+		
+	}; //* epData function ends
+	epData(JSON.stringify(Math.floor(dataSource.id1)));
+	
+};
+exports.loadDetail = loadDetail;

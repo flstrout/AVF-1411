@@ -1,0 +1,1 @@
+var loadIt=function(e){var t=require("netCheck");t.checkNet(e)};exports.loadIt=loadIt;

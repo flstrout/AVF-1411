@@ -7,27 +7,106 @@ var fSize = 14;
 var defOp = .8;
 
 var buildUI = function(d){
+	
+	// create masterView(Scroll View) and Window Shell
+var masterView = Ti.UI.createScrollView({
+	//backgroundColor: color,
+	scrollType: "vertical"
+});
+
+var lblTitle = Ti.UI.createLabel({
+	text: "Primetime Channel Lineup",
+	font: {fontSize: 22, fontWeight: "bold"},
+	top: 2
+});
+
+var lblDate = Ti.UI.createLabel({
+	text: date.substring(5,7) + "/" + date.substring(8,12) + "/" + date.substring(0,4),
+	font: {fontSize: 32, fontWeight: "bold"}
+});
+
+var titleFrame = Ti.UI.createView({
+	backgroundColor: "#fff",
+	height: 70, width: 300,
+	borderRadius: 20,
+	top: 15,
+	opacity: .8,
+	layout: "vertical"
+});
+	
 	var i;
 	//for (i=0; i < d.length; i++){
 	var shows = Ti.UI.createTableView({
 		top: 45,
-		backgroundColor: "#bf0c0c",
-		separatorColor: "#bf0c0c"
+		backgroundColor: "#000",
+		separatorColor: "#09f",
+		width: "85%",
+		borderRadius: 6
 	});
 	var list = [];
 	var tableSection = Ti.UI.createTableViewSection();
 	list.push(tableSection);
 	for (o in d){ 
 		var sectionDetail = Ti.UI.createTableViewRow({
-			id: d[o].epID,
-			title: d[o].show,
-			/*date: d[o].date,
-			problem: d[o].problem,
-			promise: d[o].promise,
-			manager: d[o].manager,*/
+			showTitle: d[o].show,
+			episode: d[o].episode,
+			id1: d[o].id1,
 			hasChild: true,
-			backgroundColor: "#eee"
+			backgroundColor: "#eee",
+			height: 60
 		});
+		// converts 24 hour time (military time) to 12 hour time.
+		if (d[o].hh > 12){
+			var ampm = "pm";
+		}else{
+			var ampm = "am";
+		};
+		
+		if (d[o].hh === "00"){
+			var HH = 12;
+		}else if (d[o].hh >12){
+			var HH = d[o].hh - 12;
+		}else{
+			var HH = d[o].hh;
+		};
+		var lblShow = Ti.UI.createLabel({
+			text: d[o].show+": "+d[o].episode,
+			showTitle: d[o].show,
+			episode: d[o].episode,
+			id1: d[o].id1,
+			font:{fontSize: 22},
+			top: 25,
+			left: 20,
+			width: "75%"
+		});
+		var lblNetwork = Ti.UI.createLabel({
+			text: d[o].network,
+			showTitle: d[o].show,
+			episode: d[o].episode,
+			id1: d[o].id1,
+			top: 5,
+			left: 20
+		});
+		var lblTime = Ti.UI.createLabel({
+			text: HH+d[o].mm+" "+ampm,
+			showTitle: d[o].show,
+			episode: d[o].episode,
+			id1: d[o].id1,
+			top: 5,
+			right: 20
+		});
+		var lblDuration = Ti.UI.createLabel({
+			text: Math.floor(d[o].tLength)+" min",
+			showTitle: d[o].show,
+			episode: d[o].episode,
+			id1: d[o].id1,
+			top: 25,
+			right: 20
+		});
+		sectionDetail.add(lblShow);
+		sectionDetail.add(lblNetwork);
+		sectionDetail.add(lblTime);
+		sectionDetail.add(lblDuration);
 		tableSection.add(sectionDetail);
 		exports.sectionDetail = sectionDetail;
 	};
@@ -95,10 +174,21 @@ var buildUI = function(d){
 		});*/
 		shows.setData(list);
 		shows.addEventListener("click", function(event){
-			console.log(event.source.id +" : "+event.source.title);
+			//console.log(event.source.id +" : "+event.source.title);
 			getDetail.loadDetail(event.source);
 		});
-		masterView.add(shows);
-	};
+		titleFrame.add(lblTitle);
+titleFrame.add(lblDate);
+var window = Ti.UI.createWindow({
+	//backgroundColor: color,
+	layout: "vertical",
+	top: 5
+});
+window.add(titleFrame);
+window.add(masterView);
+masterView.add(shows);
+window.open();
+		
+};
 	
 exports.buildUI = buildUI;
